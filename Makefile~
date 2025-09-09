@@ -1,0 +1,5 @@
+ # build an executable
+
+main.o : main.c 
+
+clean : rm 

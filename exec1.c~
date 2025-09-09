@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<unistd.h>
+
+int num=45;
+
+int main(int argc,char *argv[])
+{
+	printf("	hi this is exec1.c with num=%d\n",num);
+	printf("	pid of exec1:%d\n",getpid());
+	printf("	no of arguments:%d\n",argc);	//no of arguments passing
+	printf("	my arguments:");
+	int i;
+	for(i=0;i<argc;i++)
+	{
+		printf("%s ",argv[i]);		//name of argument and the first argument is always the name of program
+	}
+	printf("\n");
+	return 0;
+}
+
+
+/*cmd: gcc exec1.c -o exec1 and pass arguments with ./exec1 */
+
+/*THIS FILE IS IN ASSOCIATION WITH exec2.c */
