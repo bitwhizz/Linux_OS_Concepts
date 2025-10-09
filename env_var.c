@@ -20,3 +20,4 @@ return 0;
 /* to set SERVER_NAME variable from cmd line
 export SERVER_NAME= <NAME>   */
 /* To set and clear environment variabe ,use the setenv and unsetenv */
+
