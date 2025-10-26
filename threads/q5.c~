@@ -1,0 +1,37 @@
+/*wap to create a thread.this newly created thread should join with itself.there must be a printf statement.after the pthread_join in the thread code.see if this printf is executed.*/
+#include<stdio.h>
+#include<pthread.h>
+void* hello(void* x)
+{
+	while(1)
+	{
+	sleep(3);
+	printf("the value o thread1 is %d\n",pthread_self());	
+	printf("hello\t");
+	//pthread_join (pthead_self(), NULL);
+	}	
+	return NULL;
+}
+
+int main()
+{
+	pthread_t thread_id,main_id;
+	int a;
+	if(pthread_create(&thread_id,NULL,&hello,0)==-1)
+	{
+		printf("could not create thread\n");
+		return -1;
+	}
+	main_id=pthread_self();
+	if (!pthread_equal (pthread_self (), main_id))
+	pthread_join (main_id, NULL);
+	while(1)
+	{	
+	sleep(3);	
+	printf("world\n");
+	}
+	printf("the value o thread2 is %d\n",pthread_self());
+		
+	return 0;
+}
+	

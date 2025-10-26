@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<pthread.h>
+void* hello(void* x)
+{
+	int i;	
+	//for(i=0;i<5;i++)
+	while(1){
+	sleep(1);
+	printf("hello\t");
+	}	
+	return NULL;
+}
+void* world(void* x)
+{
+	int i;	
+	for(i=0;i<5;i++)
+	{
+	sleep(1);
+	printf("world\n");
+	}	
+	return NULL;
+}
+
+int main()
+{
+	pthread_t thread1_id;
+	pthread_t thread2_id;
+	int a;
+	if(pthread_create(&thread1_id,NULL,&hello,0)==-1)
+	{
+		printf("could not create thread\n");
+		return -1;
+	}
+	pthread_attr_t attr;
+	pthread_attr_init (&attr);
+	pthread_attr_setdetachstate (&attr, PTHREAD_CREATE_DETACHED);
+
+	pthread_create(&thread2_id,&attr,&world,0);
+	
+	pthread_join(thread1_id,(void*)&a);
+	printf("return of pthred_join1 is=%d\n",a);
+
+	pthread_attr_destroy (&attr);
+
+	return 0;
+}
+	
