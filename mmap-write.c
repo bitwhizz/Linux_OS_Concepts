@@ -1,5 +1,4 @@
 //Write a Random Number to a Memory-Mapped File
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
